@@ -413,6 +413,14 @@ input::-webkit-inner-spin-button {
 
 }
 
+.winner{
+    color: green
+}
+
+.loser{
+    color: grey
+}
+
 .A-inner{background: #ba040a;}
 .D-inner{background: #1a65b0;}
 .inner-grey{background: grey}

@@ -178,11 +178,17 @@
                         <h3>Round {{ r.round }} </h3>
                         <hr>
                         <div class="desc-tbl" id="logs-tbl">
-                            <div class="log-A" id="log-A-head">
-                                <h3>Attack: {{ r.attack.length }}</h3>
+                            <div class="log-A log-A-head" id="log-A-head">
+                                <h3>Attack: {{ r.attack.length }} (-{{ r.loss_A }}) 
+                                    <span class="winner" v-if="r.winner === 'Attack'"> &emsp; ROUND WINNER</span>
+                                    <span class="loser" v-if="r.winner === 'Defender'"> &emsp; Lost...</span>
+                                </h3>
                             </div>
-                            <div class="log-D" id="log-D-head">
-                                <h3>Defense: {{ r.defend.length }}</h3>
+                            <div class="log-D log-D-head" id="log-D-head">
+                                <h3>Defense: {{ r.defend.length }} (-{{ r.loss_D }})
+                                    <span class="winner" v-if="r.winner === 'Defender'"> &emsp; ROUND WINNER</span>
+                                    <span class="loser" v-if="r.winner === 'Attack'"> &emsp; Lost...</span>
+                                </h3>
                             </div>
                             <div class="log-A log-A-results">
                                 <div v-for="res in r.pips_attack" class="pips-wrap">
