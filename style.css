@@ -508,6 +508,16 @@ input::-webkit-inner-spin-button {
 
         transform: scale(3);
     }
+
+    .log-res-inner{
+        background:none;
+    }
+.A-inner{color: #ba040a;}
+.D-inner{color: #1a65b0;}
+.inner-grey{
+    background: none;
+    color: grey;
+}
 }
 
 @media (max-width: 1020px) {
