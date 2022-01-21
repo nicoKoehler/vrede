@@ -538,3 +538,10 @@ input::-webkit-inner-spin-button {
         grid-column: span 1;
     }
 }
+
+
+@media (min-width: 1000px) {
+    #modal-fight .results-cell{
+        font-size: 1.3em;
+    }
+}

@@ -110,8 +110,8 @@
                         <h2>Fight!</h2>
                     </div>
                 </div>
-                <h2 class="attack">Results</h2>
-                <hr>
+                <h2 class="attack" v-if="fightOver">Results</h2>
+                <hr v-if="fightOver">
                 <div class="results-header-wrap">
                     <h3 class="result-winner" id="results" v-if="fightOver">{{ fightBook.winner }} won!</h3>
                 </div>
