@@ -133,10 +133,8 @@ const app = Vue.createApp({
                     cnt_attack = cnt_attack - loss_O
                     cnt_defend = cnt_defend - loss_D
                     if (cnt_defend > 0){
-                        console.log("Defender WON!");
                         this.fightBook.winner = "Defender"
                     }else{
-                        console.log("Attack WON");
                         this.fightBook.winner = "Attack"
                     }
                     
@@ -176,8 +174,9 @@ const app = Vue.createApp({
                 this.fightOver = !this.fightOver
 
 
+                
 
-                console.log(JSON.stringify(this.fightBook));
+
 
             }
 
