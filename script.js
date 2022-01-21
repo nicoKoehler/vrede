@@ -57,9 +57,18 @@ const app = Vue.createApp({
             }
         },
 
-        toggleLogs(){
-            this.showLog = !this.showLog
-            this.showModal = !this.showModal
+        toggleLogs(f){
+
+            if(f ===1){
+                this.showLog = !this.showLog
+                this.showModal = !this.showModal
+                return 0
+            }
+            if(f === 2){
+                this.showLog = !this.showLog
+                this.showFight = false
+                return 0                
+            }
         },
         getRandomInt(max){
             return Math.floor(Math.random() * (max)) + 1

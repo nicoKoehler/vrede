@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="style.css">
 
     <title>Vrede</title>
@@ -129,7 +130,7 @@
                         <span> {{ fightBook.losses_defend }} <b>Losses</b></span>
                         <span> {{ fightBook.remaining_defend }} <b>Remaining</b></span>
                     </div>
-                    <div @click="toggleLogs" class="results-cell log" id="log">
+                    <div @click="toggleLogs(1)" class="results-cell log" id="log">
                         <span>See Fight Logs <i class="fas fa-dice"></i></span>
 
                     </div>
@@ -203,7 +204,7 @@
                         </div>
 
 
-                        <div class="close" @click="toggleLogs">
+                        <div class="close" @click="toggleLogs(1)">
                             X
                         </div>
                     </div>
@@ -230,7 +231,7 @@
                             <span> {{ fightBook.losses_defend }} <b>Losses</b></span>
                             <span> {{ fightBook.remaining_defend }} <b>Remaining</b></span>
                         </div>
-                        <div @click="toggleLogs" class="results-cell log" id="log-m">
+                        <div @click="toggleLogs(2)" class="results-cell log" id="log-m">
                             <span>See Fight Logs <i class="fas fa-dice"></i></span>
 
                         </div>
