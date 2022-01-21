@@ -7,11 +7,19 @@ The full proposed rules can be viewed here:
 [Vrede Game - Rules](https://docs.google.com/document/d/1x7HAVB5mqjzxy27YdWaZ6VnHtTOtj3hEtrUC2CYui1c/edit?usp=sharing)
 
 
+
 ## What is this app about
 The Vrede compagnion app is intended to help with two key aspects of the game: Fighting and Event Cards.
 
 The app can be access from here:
 [Vrede Compagnion App](https://vrede.herokuapp.com/)
 
+
 ## How does the fighting work
 Fighting aims to simulate the randomized dice fighting from the Risk games. In principle, the amount of armies you attack with corresponds to the dice that are simulated. Same for defense. 
+
+### Fight Settings
+Under the settings button, you can choose how the fight should be simulated. There are 2 key settings.
+
+#### Fight Mode
+These Fight modes change how the battle is simulated. 
