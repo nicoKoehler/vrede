@@ -118,6 +118,9 @@ const app = Vue.createApp({
             while(cnt_attack > 0 && cnt_defend > 0){
                 this.fightBook.fightLog[`round_${rounds}`] = {
                     round: rounds,
+                    winner: "",
+                    loss_A: 0,
+                    loss_D: 0,
                     attack: [],
                     defend:[]
                 }
@@ -150,15 +153,21 @@ const app = Vue.createApp({
                         loss_D ++
                     }else{loss_O ++}
                 }
-
                 
+                if (arr_defendRes.length == loss_D){
+                    this.fightBook.fightLog[`round_${rounds}`].winner = "Attack"
+                }else{
+                    this.fightBook.fightLog[`round_${rounds}`].winner = "Defender"
+                }
  
                 cnt_attack = cnt_attack - loss_O
                 cnt_defend = cnt_defend - loss_D
                 if (cnt_defend > 0){
                     this.fightBook.winner = "Defender"
+                    
                 }else{
                     this.fightBook.winner = "Attack"
+                    
                 }
                 
                 this.fightBook.fightLog[`round_${rounds}`].pips_attack = [
@@ -179,6 +188,9 @@ const app = Vue.createApp({
                     {pips:"1", count: arr_defendRes.filter(p => p===1).length}
                 ]
                 
+                this.fightBook.fightLog[`round_${rounds}`].loss_A = loss_O
+                this.fightBook.fightLog[`round_${rounds}`].loss_D = loss_D
+
                 if (!this.repeatAttack) break;
                 rounds ++;
 
@@ -198,7 +210,7 @@ const app = Vue.createApp({
 
 
 
-                
+            console.log(JSON.stringify(this.fightBook));
             this.toggleFight()
 
 
