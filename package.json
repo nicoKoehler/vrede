@@ -1,0 +1,23 @@
+{
+  "name": "19_RIxa_compagnion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://nicoKoehler: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@github.com/nicoKoehler/vrede.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicoKoehler/vrede/issues"
+  },
+  "homepage": "https://github.com/nicoKoehler/vrede#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
