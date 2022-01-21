@@ -6,6 +6,7 @@ const app = Vue.createApp({
             showDesc: false,
             showLog: false,
             showSettings: false,
+            showFight: false,
             btn_sel:{                               // if more than 2 elem >>> change toggleBtn !!!
                 'skirm': true,
                 'risk': false
@@ -35,6 +36,10 @@ const app = Vue.createApp({
             this.showSettings = !this.showSettings
 
         },
+        toggleFight(){
+            this.showFight = !this.showFight
+            this.showModal = !this.showModal
+        },
         toggleBtn(org){
             this.btn_sel[org] = !this.btn_sel[org]
             other = Object.keys(this.btn_sel).filter(w => w != org) // this method assumes there is always exactly one other button to be pressed
@@ -52,7 +57,7 @@ const app = Vue.createApp({
             }
         },
 
-        showLogs(){
+        toggleLogs(){
             this.showLog = !this.showLog
             this.showModal = !this.showModal
         },
@@ -176,7 +181,7 @@ const app = Vue.createApp({
 
 
                 
-
+            this.toggleFight()
 
 
             }

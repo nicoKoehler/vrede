@@ -281,7 +281,7 @@ input::-webkit-inner-spin-button {
     width: 100%;
     margin-bottom: 1vh;
 }
-#results{
+.result-winner{
     border: darkmagenta 3px solid;
     width: 40%;
     text-align: center;
@@ -313,17 +313,17 @@ input::-webkit-inner-spin-button {
 
 }
 
-#res-cell-A span{
+.res-cell-A span{
     width: 100%;
     text-align: right;
     
 }
 
-#res-cell-A span{
+.res-cell-A span{
     border-right: darkslategrey 2px solid;
     padding-right: 1vw;
 }
-#res-cell-D span{
+.res-cell-D span{
     border-left: darkslategrey 2px solid;
     padding-left: 1vw;
 }
@@ -339,7 +339,7 @@ input::-webkit-inner-spin-button {
 .results-tbl p{margin: 0.5vh;}
 .results-tbl span{display: block;}
 
-#log{
+.log{
     grid-column: span 2;
     border: darkslategrey 3px solid;
     border-radius: 10px;
@@ -352,7 +352,7 @@ input::-webkit-inner-spin-button {
  
 }
 
-#log span{
+.log span{
     font-weight: 900;
     line-height: 3vh;
 }
@@ -360,7 +360,7 @@ input::-webkit-inner-spin-button {
 
 
 
-#log:hover{
+.log:hover{
     color: white;
     background-color: darkslategrey;
     transition: 0.2s ease;

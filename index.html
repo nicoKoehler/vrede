@@ -112,24 +112,24 @@
                 <h2 class="attack">Results</h2>
                 <hr>
                 <div class="results-header-wrap">
-                    <h3 id="results" v-if="fightOver">{{ fightBook.winner }} won!</h3>
+                    <h3 class="result-winner" id="results" v-if="fightOver">{{ fightBook.winner }} won!</h3>
                 </div>
                 <div v-if="fightOver" class="results-tbl">
 
-                    <div class="results-cell" id="res-cell-A">
-                        <span class="cell-head" id="cell-head-A">Attack</span>
+                    <div class="results-cell res-cell-A" id="res-cell-A">
+                        <span class="cell-head cell-head-A" id="cell-head-A">Attack</span>
                         <span><b>Start:</b> {{ fightBook.start_attack }}</span>
                         <span><b>Losses:</b> {{ fightBook.losses_attack }}</span>
                         <span><b>Remaining:</b> {{ fightBook.remaining_attack }}</span>
                     </div>
 
-                    <div class="results-cell" id="res-cell-D">
-                        <span class="cell-head" id="cell-head-D">Defend</span>
+                    <div class="results-cell res-cell-D" id="res-cell-D">
+                        <span class="cell-head cell-head-D" id="cell-head-D">Defend</span>
                         <span>{{ fightBook.start_defend }} <b>Start</b> </span>
                         <span> {{ fightBook.losses_defend }} <b>Losses</b></span>
                         <span> {{ fightBook.remaining_defend }} <b>Remaining</b></span>
                     </div>
-                    <div @click="showLogs" class="results-cell" id="log">
+                    <div @click="toggleLogs" class="results-cell log" id="log">
                         <span>See Fight Logs <i class="fas fa-dice"></i></span>
 
                     </div>
@@ -203,9 +203,42 @@
                         </div>
 
 
-                        <div class="close" @click="showLogs">
+                        <div class="close" @click="toggleLogs">
                             X
                         </div>
+                    </div>
+                </div>
+
+                <div class="modal-body" v-if="showFight" id="modal-fight">
+                    <h2>Fight results</h2>
+                    <hr>
+                <div class="results-header-wrap">
+                    <h3 class="result-winner" id="results-modal" v-if="fightOver">{{ fightBook.winner }} won!</h3>
+                </div>
+                    <div v-if="fightOver" class="results-tbl">
+
+                        <div class="results-cell res-cell-A" id="res-cell-Am">
+                            <span class="cell-head cell-head-A" id="cell-head-Am">Attack</span>
+                            <span><b>Start:</b> {{ fightBook.start_attack }}</span>
+                            <span><b>Losses:</b> {{ fightBook.losses_attack }}</span>
+                            <span><b>Remaining:</b> {{ fightBook.remaining_attack }}</span>
+                        </div>
+
+                        <div class="results-cell res-cell-D" id="res-cell-Dm">
+                            <span class="cell-head cell-head-D" id="cell-head-Dm">Defend</span>
+                            <span>{{ fightBook.start_defend }} <b>Start</b> </span>
+                            <span> {{ fightBook.losses_defend }} <b>Losses</b></span>
+                            <span> {{ fightBook.remaining_defend }} <b>Remaining</b></span>
+                        </div>
+                        <div @click="toggleLogs" class="results-cell log" id="log-m">
+                            <span>See Fight Logs <i class="fas fa-dice"></i></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="close" @click="toggleFight">
+                        X
                     </div>
                 </div>
 

@@ -1,4 +1,5 @@
 # Vrede Compagnion App
+Pronounciation: /vreːdə/
 
 ## What is it
 Vrede is a hybrid game, combining the best elements of the popular strategy games of Risk and Catan. It takes element of strategic warfare from Risk, and combines it with the resource gathering and city building from Catan. 
