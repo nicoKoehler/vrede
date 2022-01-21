@@ -56,14 +56,14 @@
                     <div class="settings" v-if="showSettings">
                         <div class="btn-row" id="btn-row-fight">
                             <div @click="toggleBtn('skirm')" class="btn-fight" :class="{v_selected: btn_sel['skirm']}"
-                                id="btn-skirmish">Skirmish</div>
+                                id="btn-skirmish"><h3>Skirmish</h3></div>
                             <div @click="toggleBtn('risk')" class="btn-fight" :class="{v_selected: btn_sel['risk']}"
-                                id="btn-risk">Risk (3 Dice)</div>
+                                id="btn-risk"><h3>Risk (3 Dice)</h3></div>
                         </div>
                         <div class="center-wrap">
                             <div class="center-inner">
                                 <input type="checkbox" class="check" id="repeatAttack" v-model="repeatAttack">
-                                <label for="checkbox">Repeated Attacks: {{ repeatAttack }}</label>
+                                <label for="checkbox">Repeated Attacks</label>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                         <span> {{ fightBook.remaining_defend }} <b>Remaining</b></span>
                     </div>
                     <div @click="toggleLogs(1)" class="results-cell log" id="log">
-                        <span>See Fight Logs <i class="fas fa-dice"></i></span>
+                        <span><h3>See Fight Logs <i class="fas fa-dice"></i></h3></span>
 
                     </div>
 
@@ -232,7 +232,7 @@
                             <span> {{ fightBook.remaining_defend }} <b>Remaining</b></span>
                         </div>
                         <div @click="toggleLogs(2)" class="results-cell log" id="log-m">
-                            <span>See Fight Logs <i class="fas fa-dice"></i></span>
+                            <span><h3>See Fight Logs <i class="fas fa-dice"></i></h3></span>
 
                         </div>
 

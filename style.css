@@ -102,11 +102,12 @@ h1{
     color: darkslategrey;
     font-family: "Comfortaa";
     font-weight: 700;
-    padding: 1vh;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     transition: 0.2s;
 }
+
+.btn-fight h3{margin: 1vh;}
 
 .v_selected{
     background-color: darkslategrey;
@@ -347,10 +348,11 @@ input::-webkit-inner-spin-button {
     font-family: "Comfortaa";
     text-align: center;
     transition: 0.2s ease;
-    height: 3vh;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
  
 }
+
+.log h3{margin: 1vh;}
 
 .log span{
     font-weight: 900;
