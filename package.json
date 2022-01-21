@@ -6,10 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://nicoKoehler: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@github.com/nicoKoehler/vrede.git"
-  },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
