@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Rixa</title>
+</head>
+<body>
+    <div id="cover-bg">
+    <div id="header">
+        <h1>Rixa Compagnion App</h1>
+    </div>
+    <div id="main">
+        <div class="main-col" id="main-colA">
+            <div class="col-head" id="fight">
+                <h2>Fight Sim</h2>
+            </div>
+            
+            <div class="desc" id="desc-fight">
+                <div class="intro">
+                    <p>
+                        Simulate your battles here! <br>
+                        Setting: <b>{{ currentBattleSetting() }} & {{ repeatAttack ? 'Repeated Attacks' : 'Single Attacks' }} </b> <br>
+                        Click <i class="fas fa-cog" style="color: darkslategray;"></i> to change settings, <span style="color: #0091E7"><i class="far fa-question-circle"></i></span> for help
+                    </p> 
+                    <div class="btn-help" id="btn-set">
+                        <div class="btn-circle" id="btn-circle-set" @click="toggleSettings">
+                            <p><i class="fas fa-cog"></i></p>
+                        </div>
+                    </div>
+                    <div class="btn-help" id="btn-help">
+                        <div class="btn-circle" id="btn-circle-help" @click="toggleDesc">
+                            <p>?</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="settings" v-if="showSettings">
+                    <div class="btn-row" id="btn-row-fight">
+                        <div @click="toggleBtn('skirm')" class="btn-fight" :class="{v_selected: btn_sel['skirm']}" id="btn-skirmish">Skirmish</div>
+                        <div @click="toggleBtn('risk')" class="btn-fight" :class="{v_selected: btn_sel['risk']}" id="btn-risk">Risk (3 Dice)</div>
+                    </div>
+                    <input type="checkbox" class="check" id="repeatAttack" v-model="repeatAttack">
+                    <label for="checkbox">Repeated Attacks: {{ repeatAttack }}</label>
+                </div>
+            </div>
+            
+            <h2 class="attack">Attack!</h2>
+            <hr>
+            <div class="battle">
+                <div class="battle-side" id="offense">
+                    <h3>Raise your Army</h3>
+                    <div class="raise" id="raise-o">
+                        <div @click="btn_sub('attack')" class="change" id="subs">
+                            <div class="btn-circle">
+                                <p>--</p>
+                            </div>
+                        </div>
+                        <input v-model.number="cnt_army['attack']" type="text" class="enter" id="enter-o" placeholder="0">
+                        <div @click="btn_add('attack')" class="change" id="add">
+                            <div class="btn-circle">
+                                <p>+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="battle-side" id="defense">
+                    <h3>Raise your Defense</h3>
+                    <div class="raise" id="raise-d">
+                        <div @click="btn_sub('defend')" class="change" id="subs">
+                            <div class="btn-circle">
+                                <p>--</p>
+                            </div>
+                        </div>
+                        <input v-model.number="cnt_army['defend']" type="number" class="enter" id="enter-d" placeholder="0">
+                        <div @click="btn_add('defend')" class="change" id="add">
+                            <div class="btn-circle">
+                                <p>+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div @click="fight" class="btn-confirm" id="btn-fight">
+                    <h2>Fight!</h2>
+                </div>
+            </div>
+            <h2 class="attack">Results</h2>
+            <hr>
+            <div class="results-header-wrap">
+                <h3 id="results" v-if="fightOver">{{ fightBook.winner }} won!</h3>
+            </div>
+            <div v-if="fightOver" class="results-tbl">
+                
+                <div class="results-cell" id="res-cell-A">
+                    <span class="cell-head" id="cell-head-A">Attack</span>
+                    <span><b>Start:</b> {{ fightBook.start_attack }}</span> 
+                    <span><b>Losses:</b> {{ fightBook.losses_attack }}</span>
+                    <span><b>Remaining:</b> {{ fightBook.remaining_attack }}</span>
+                </div>
+    
+                <div class="results-cell" id="res-cell-D">
+                    <span class="cell-head" id="cell-head-D">Defend</span>
+                    <span>{{ fightBook.start_defend }} <b>Start</b> </span> 
+                    <span> {{ fightBook.losses_defend }} <b>Losses</b></span>
+                    <span> {{ fightBook.remaining_defend }} <b>Remaining</b></span> 
+                </div>
+                <div @click="showLogs" class="results-cell" id="log">
+                    <span>See Fight Logs <i class="fas fa-dice"></i></span>
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <!-- +++++++++++++++++++ End of A +++++++++++++++++++ -->
+        <div class="main-col" id="main-colB">
+            <div class="col-head" id="cards">
+                <h2>Events</h2>
+            </div>
+        </div>
+
+        <div class="modal" v-if="showModal">
+            <div class="modal-body" v-if="showDesc">
+                <h2>Fight Sim Modes</h2>
+                <div class="desc-tbl" id="desc-tblA">
+                    <p><b>Skirmish</b></p>
+                    <p class="desc-txt">This a full head-to-head. You battle with all the troups involved at the same time. This makes large imbalanced battles more decisive</p>
+                    <p><b>Risk 3-Dice</b></p>
+                    <p class="desc-txt">Classic Risk fighting mode. A maximum of 3 attacking vs 2 defending dice are simulated. The simulation runs until the battle is over.</p>
+                    <p><b>Repeated Attacks</b></p>
+                    <p class="desc-txt">If checked, the battle will be fought until either side is completely obliterated. If not checked, the battle will stop after the defender has used all dice. <br><b>E.g.</b> If  A attacks with 4 dice, and B defends with 2, A might lose all 4 troops under "repeat". Otherwise A can lose a maximum of 2 troops, and then decide for retreat.</p>
+                
+                </div>
+                <div class="close" @click="toggleDesc">
+                    X
+                </div>
+            </div>
+            <div class="modal-body" v-if="showLog" id="modal-log">
+                <h2>Fight results</h2>
+                
+                <div class="round-wrap" v-for="r in fightBook.fightLog">
+                    <h3>Round {{ r.round }} </h3>
+                    <hr>
+                    <div class="desc-tbl" id="logs-tbl">
+                        <div class="log-A" id="log-A-head">
+                            <h3>Attack: {{ r.attack.length }}</h3>
+                        </div>
+                        <div class="log-D" id="log-D-head">
+                            <h3>Defense: {{ r.defend.length }}</h3>
+                        </div>
+                        <div class="log-A log-A-results" >
+                            <div v-for="res in r.pips_attack" class="pips-wrap">
+                                <div class="pips-wrap-inner">
+                                    <span>{{ res.count }} x </span><div class="log-res-inner A-inner" :class="res.count === 0 ? 'inner-grey' : ''">{{ res.pips }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="log-D log-D-results">
+                            <div v-for="res in r.pips_defend" class="pips-wrap">
+                                <div class="pips-wrap-inner">
+                                    <span>{{ res.count }} x </span><div class="log-res-inner D-inner" :class="res.count === 0 ? 'inner-grey' : ''">{{ res.pips }}</div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+
+                <div class="close" @click="showLogs">
+                    X
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
