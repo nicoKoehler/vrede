@@ -46,9 +46,10 @@ h1{
 
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.5);
-    min-height: 100vh;
+    height: 100%;
     width: 100%;
     padding: 2vh 0 2vh 0;
+    display: table;
 
 }
 /*############### COLUMN CONTENT ###############*/
@@ -90,7 +91,7 @@ h1{
     color: darkslategrey;
     font-family: "Comfortaa";
     font-weight: 700;
-    padding: 0.5vh;
+    padding: 1vh;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     transition: 0.2s;
@@ -176,7 +177,7 @@ h1{
     padding-left: 13vw;
 }
 .center-inner label{
-
+    font-size: 1.2em;
     width: 50%;
 }
 
