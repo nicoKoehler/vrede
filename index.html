@@ -107,10 +107,12 @@
                         </div>
                     </div>
                     <div @click="fight" class="btn-confirm" id="btn-fight">
-                        <h2>Fight!</h2>
+                        <h2>Fight! <i class="fas fa-fist-raised"></i></h2>
                     </div>
                 </div>
-                <h2 class="attack" v-if="fightOver">Results</h2>
+                <h2 class="attack" v-if="fightOver">Results <i class="fas fa-balance-scale-right"></i>
+
+                </h2>
                 <hr v-if="fightOver">
                 <div class="results-header-wrap">
                     <h3 class="result-winner" id="results" v-if="fightOver">{{ fightBook.winner }} won!</h3>
@@ -144,7 +146,7 @@
             <!-- +++++++++++++++++++ End of A +++++++++++++++++++ -->
             <div class="main-col" id="main-colB">
                 <div class="col-head" id="cards">
-                    <h2>Events</h2>
+                    <h2>Events &emsp; <i class="fas fa-meteor"></i></h2>
                 </div>
             </div>
             <!-- +++++++++++++++++++ End of B +++++++++++++++++++ -->
