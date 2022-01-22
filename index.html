@@ -145,10 +145,27 @@
             </div>
             <!-- +++++++++++++++++++ End of A +++++++++++++++++++ -->
             <div class="main-col" id="main-colB">
-                <div class="col-head" id="cards">
+                <div class="col-head" id="card-head">
                     <h2>Events &emsp; <i class="fas fa-meteor"></i></h2>
                 </div>
+                <div class="cards">
+                    <div class="card" id="card-event">
+                        <h3>Draw an Event card &ensp;<i class="fas fa-theater-masks"></i></h3>
+                    </div>
+                    <div class="card card-dev" id="card-eco">
+                        <h3>Get a Development Card: &ensp; <b><i class="fas fa-industry"></i> Economics</b> </h3>
+                    </div>
+                    <div class="card card-dev" id="card-cult">
+                        <h3>Get a Development Card: &ensp; <i class="fas fa-journal-whills"></i> <b>Culture</b></h3>
+                    </div>
+                    <div class="card card-dev" id="card-mil">
+                        <h3>Get a Development Card: &ensp; <i class="fas fa-fighter-jet"></i> <b>Military</b> </h3>
+                    </div>
+                </div>
             </div>
+
+
+
             <!-- +++++++++++++++++++ End of B +++++++++++++++++++ -->
             <div class="modal" v-if="showModal">
                 <div class="modal-body" v-if="showDesc">

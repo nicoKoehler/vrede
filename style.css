@@ -425,6 +425,48 @@ input::-webkit-inner-spin-button {
 .D-inner{background: #1a65b0;}
 .inner-grey{background: grey}
 
+
+
+/*############### CARDS CONTENT ###############*/
+
+.cards{
+
+    padding: 2vw;
+}
+
+.card{
+    margin: 0 auto;
+    margin-top: 2vh;
+    padding: 0.1vh;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card h3{
+    text-align: center;
+}
+
+#card-event{
+    color: white;
+    background: #00BEBB;
+}
+
+.card-dev{
+    color: white;
+    background: #F64D5F;
+}
+
+.card:hover{
+    background: white;
+    cursor: pointer;
+}
+
+#card-event:hover{
+    color: #00BEBB;
+    background: white;
+}
+.card-dev:hover{color: #F64D5F;}
+
 /*############### MODAL CONTENT ###############*/
 
 .modal{
