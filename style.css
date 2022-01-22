@@ -656,13 +656,16 @@ input::-webkit-inner-spin-button {
 
 
 @media (max-height: 800px){
+    .modal-card{
+        width: 50%;
+    }
     .card-body{
         height: 40%;
         font-size: 0.8em;
         text-align: justify;
     }
     #card-img{
-        width: 70%;
+        width: 55%;
     }
     .card-head{
         font-size: 0.9em;

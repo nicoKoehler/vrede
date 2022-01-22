@@ -30,6 +30,11 @@
             "picture": "/assets/cards/harvest.jpg",
             "headline": "Rich Harvests",
             "description":"Every player earns one additional resource from a rich harvest from a settled region of their choice."
+        },
+        "6":{
+            "picture": "/assets/cards/army.jpg",
+            "headline": "Call to arms",
+            "description":"With increased tensions in the world, every player in the region earns an additional army to place anywhere within their territories"
         }
     },
     "economic":{
