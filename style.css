@@ -471,7 +471,7 @@ input::-webkit-inner-spin-button {
 
 .modal-card{
     background: white;
-    width: 30%;
+    height: 80%;
     aspect-ratio: auto 9/16;
     margin: 0 auto; 
     padding: 2%;
@@ -651,5 +651,20 @@ input::-webkit-inner-spin-button {
 @media (min-width: 1000px) {
     #modal-fight .results-cell{
         font-size: 1.3em;
+    }
+}
+
+
+@media (max-height: 800px){
+    .card-body{
+        height: 40%;
+        font-size: 0.8em;
+        text-align: justify;
+    }
+    #card-img{
+        width: 70%;
+    }
+    .card-head{
+        font-size: 0.9em;
     }
 }

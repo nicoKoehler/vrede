@@ -122,8 +122,7 @@ const app = Vue.createApp({
                     cnt_eco = Object.keys(this.cards[type]).length -1
                     whichEco = this.getRandomInt(cnt_eco)
                     this.cardDisplay = this.cards[type][`${whichEco}`]
-                    this.cardDisplay.region = this.regions[this.getRandomInt(this.regions.length)];
-                    console.log(this.cardDisplay);
+                   
 
                 }else{
                     alert("Oh rats... a Problem in... Dev cards")
