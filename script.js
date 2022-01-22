@@ -1,3 +1,5 @@
+
+
 const app = Vue.createApp({
 
     data(){
@@ -7,6 +9,7 @@ const app = Vue.createApp({
             showLog: false,
             showSettings: false,
             showFight: false,
+            showCard: false,
             btn_sel:{                               // if more than 2 elem >>> change toggleBtn !!!
                 'skirm': true,
                 'risk': false
@@ -17,9 +20,20 @@ const app = Vue.createApp({
             },
             repeatAttack: true,
             fightOver: false,
-            fightBook: {}
+            fightBook: {},
+            cardDisplay:{},
+            cards: {},
+            devCardTypes: ["economic", "culture", "military"],
+            regions: ["Africa", "Asia", "Australia", "Europe", "North America", "South America"]
         }
     
+    },
+    mounted(){
+        fetch("/data/cards.json")
+        .then(res => res.json())
+        .then(json => {
+            this.cards = json
+    })
     },
     methods:{
         currentBattleSetting(){
@@ -69,6 +83,58 @@ const app = Vue.createApp({
                 this.showFight = false
                 return 0                
             }
+        },
+        getPic(){
+            return this.cardDisplay.picture
+        },
+        toggleCard(type){
+            this.showModal = !this.showModal
+            this.showCard = !this.showCard
+
+            if (type != "0"){
+                
+                cardDisplay = {}
+                if( type === "event"){
+                    
+                        ifEvent = this.getRandomInt(6)
+                        console.log(ifEvent);
+                        //determine if an event happens
+                        if (ifEvent < 4){
+                            console.log("No Event");
+                            this.cardDisplay = this.cards.event["0"]
+                            this.cardDisplay.type = "card-E"
+
+                            
+                        }else if(ifEvent >= 4){
+                            console.log("EVENT");
+                            cnt_event = Object.keys(this.cards.event).length -1
+                            whichEvent = this.getRandomInt(cnt_event)
+                            
+                            //set region
+                            whichRegion = this.getRandomInt(this.regions.length) -1
+                            this.cardDisplay = this.cards.event[`${whichEvent}`]
+                            this.cardDisplay.region = this.regions[whichRegion];
+                        }else{
+                            alert("Oh rats... a Problem in... Event cards")
+                        }
+                }else if(this.devCardTypes.includes(type)){
+
+                    cnt_eco = Object.keys(this.cards[type]).length -1
+                    whichEco = this.getRandomInt(cnt_eco)
+                    this.cardDisplay = this.cards[type][`${whichEco}`]
+                    this.cardDisplay.region = this.regions[this.getRandomInt(this.regions.length)];
+                    console.log(this.cardDisplay);
+
+                }else{
+                    alert("Oh rats... a Problem in... Dev cards")
+                }
+
+                
+
+            }
+
+            
+
         },
         getRandomInt(max){
             return Math.floor(Math.random() * (max)) + 1
@@ -216,7 +282,7 @@ const app = Vue.createApp({
 
             
 
-        }
+        },
         
     }
 

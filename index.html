@@ -56,9 +56,13 @@
                     <div class="settings" v-if="showSettings">
                         <div class="btn-row" id="btn-row-fight">
                             <div @click="toggleBtn('skirm')" class="btn-fight" :class="{v_selected: btn_sel['skirm']}"
-                                id="btn-skirmish"><h3>Skirmish</h3></div>
+                                id="btn-skirmish">
+                                <h3>Skirmish</h3>
+                            </div>
                             <div @click="toggleBtn('risk')" class="btn-fight" :class="{v_selected: btn_sel['risk']}"
-                                id="btn-risk"><h3>Risk (3 Dice)</h3></div>
+                                id="btn-risk">
+                                <h3>Risk (3 Dice)</h3>
+                            </div>
                         </div>
                         <div class="center-wrap">
                             <div class="center-inner">
@@ -133,7 +137,9 @@
                         <span> {{ fightBook.remaining_defend }} <b>Remaining</b></span>
                     </div>
                     <div @click="toggleLogs(1)" class="results-cell log" id="log">
-                        <span><h3>See Fight Logs <i class="fas fa-dice"></i></h3></span>
+                        <span>
+                            <h3>See Fight Logs <i class="fas fa-dice"></i></h3>
+                        </span>
 
                     </div>
 
@@ -143,22 +149,22 @@
 
 
             </div>
-            <!-- +++++++++++++++++++ End of A +++++++++++++++++++ -->
+            <!-- +++++++++++++++++++ COLUMN B +++++++++++++++++++ -->
             <div class="main-col" id="main-colB">
                 <div class="col-head" id="card-head">
                     <h2>Events &emsp; <i class="fas fa-meteor"></i></h2>
                 </div>
                 <div class="cards">
-                    <div class="card" id="card-event">
+                    <div @click="toggleCard('event')" class="card" id="card-event">
                         <h3>Draw an Event card &ensp;<i class="fas fa-theater-masks"></i></h3>
                     </div>
-                    <div class="card card-dev" id="card-eco">
+                    <div @click="toggleCard('economic')" class="card card-dev" id="card-eco">
                         <h3>Get a Development Card: &ensp; <b><i class="fas fa-industry"></i> Economics</b> </h3>
                     </div>
-                    <div class="card card-dev" id="card-cult">
+                    <div @click="toggleCard('culture')" class="card card-dev" id="card-cult">
                         <h3>Get a Development Card: &ensp; <i class="fas fa-journal-whills"></i> <b>Culture</b></h3>
                     </div>
-                    <div class="card card-dev" id="card-mil">
+                    <div @click="toggleCard('military')" class="card card-dev" id="card-mil">
                         <h3>Get a Development Card: &ensp; <i class="fas fa-fighter-jet"></i> <b>Military</b> </h3>
                     </div>
                 </div>
@@ -166,7 +172,7 @@
 
 
 
-            <!-- +++++++++++++++++++ End of B +++++++++++++++++++ -->
+            <!-- +++++++++++++++++++ MODAL: INFO +++++++++++++++++++ -->
             <div class="modal" v-if="showModal">
                 <div class="modal-body" v-if="showDesc">
                     <h2>Fight Sim Modes</h2>
@@ -181,13 +187,15 @@
                         <p class="desc-txt">If checked, the battle will be fought until either side is completely
                             obliterated. If not checked, the battle will stop after the defender has used all dice.
                             <br><b>E.g.</b> If A attacks with 4 dice, and B defends with 2, A might lose all 4 troops
-                            under "repeat". Otherwise A can lose a maximum of 2 troops, and then decide for retreat.</p>
-             
+                            under "repeat". Otherwise A can lose a maximum of 2 troops, and then decide for retreat.
+                        </p>
+
                     </div>
                     <div class="close" @click="toggleDesc">
                         X
                     </div>
                 </div>
+                <!-- +++++++++++++++++++ MODAL: RESULTS detailed +++++++++++++++++++ -->
                 <div class="modal-body" v-if="showLog" id="modal-log">
                     <h2>Fight results</h2>
 
@@ -196,14 +204,14 @@
                         <hr>
                         <div class="desc-tbl" id="logs-tbl">
                             <div class="log-A log-A-head" id="log-A-head">
-                                <h3>Attack: {{ r.attack.length }} (-{{ r.loss_A }}) 
-                                    <span class="winner" v-if="r.winner === 'Attack'"> &emsp; ROUND WINNER</span>
+                                <h3>Attack: {{ r.attack.length }} (-{{ r.loss_A }})
+                                    <span class="winner" v-if="r.winner === 'Attack'"> &emsp; WINNER</span>
                                     <span class="loser" v-if="r.winner === 'Defender'"> &emsp; Lost...</span>
                                 </h3>
                             </div>
                             <div class="log-D log-D-head" id="log-D-head">
                                 <h3>Defense: {{ r.defend.length }} (-{{ r.loss_D }})
-                                    <span class="winner" v-if="r.winner === 'Defender'"> &emsp; ROUND WINNER</span>
+                                    <span class="winner" v-if="r.winner === 'Defender'"> &emsp; WINNER</span>
                                     <span class="loser" v-if="r.winner === 'Attack'"> &emsp; Lost...</span>
                                 </h3>
                             </div>
@@ -235,12 +243,13 @@
                     </div>
                 </div>
 
+                <!-- +++++++++++++++++++ MODAL: RESULTS overall +++++++++++++++++++ -->
                 <div class="modal-body" v-if="showFight" id="modal-fight">
                     <h2>Fight results</h2>
                     <hr>
-                <div class="results-header-wrap">
-                    <h3 class="result-winner" id="results-modal" v-if="fightOver">{{ fightBook.winner }} won!</h3>
-                </div>
+                    <div class="results-header-wrap">
+                        <h3 class="result-winner" id="results-modal" v-if="fightOver">{{ fightBook.winner }} won!</h3>
+                    </div>
                     <div v-if="fightOver" class="results-tbl">
 
                         <div class="results-cell res-cell-A" id="res-cell-Am">
@@ -257,7 +266,9 @@
                             <span> {{ fightBook.remaining_defend }} <b>Remaining</b></span>
                         </div>
                         <div @click="toggleLogs(2)" class="results-cell log" id="log-m">
-                            <span><h3>See Fight Logs <i class="fas fa-dice"></i></h3></span>
+                            <span>
+                                <h3>See Fight Logs <i class="fas fa-dice"></i></h3>
+                            </span>
 
                         </div>
 
@@ -268,6 +279,23 @@
                     </div>
                 </div>
 
+                <!-- +++++++++++++++++++ MODAL: CARD +++++++++++++++++++ -->
+                <div class="modal-card" :class="cardDisplay.type" v-if="showCard">
+                    <div class="card-img-wrap">
+                        <img id="card-img" :src="getPic()" alt="" srcset="">
+                    </div>
+                    <div class="card-head">
+                        <h2>{{ cardDisplay.headline }} <span v-if="cardDisplay.region"> in {{ cardDisplay.region }}</span> </h2>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            {{ cardDisplay.description }}
+                        </p>
+                    </div>
+                    <div @click="toggleCard('0')" class="card-close" :class="cardDisplay.type === 'card-E' ? 'close-E' : ''">
+                        <h3>Close</h3>
+                    </div>
+                </div>
             </div>
         </div>
 

@@ -1,0 +1,86 @@
+{
+    "event": {
+        "0": {
+            "picture":"/assets/cards/neutral.png",
+            "headline":"A rather uneventful period.",
+            "description": "Nothing significant is happening in this calm period. Rest easy and prepare for tougher times ahead."
+        },
+        "1": {
+            "picture": "/assets/cards/fire.jpg",
+            "headline": "Violent Fires",
+            "description": "After a very dry summer, a rampant fire has broken out in one of every player's city (except for capitals) in that region. Downgrade at least one of your cities to a settlement in that region."
+        },
+        "2": {
+            "picture": "/assets/cards/fire.jpg",
+            "headline": "A deadly Plague",
+            "description": "A new plague has broken out in thi region. 33% of your armies vanish. (Divide by 3 and Round down. 8 Armies = 8/3 = 2 armies vanish)"
+        },
+        "3": {
+            "picture": "/assets/cards/fire.jpg",
+            "headline": "Poor Harvest",
+            "description": "After a very turbulent summer, crops have grown poorly in this region. Territories in that region only yield half of the resources. Every city only yields 1 resource. Only half of your settlements yield resources (the players choose which of their settlements yield. Rounddown if the number is uneven. If you have 3 settlements (3/2) => 1 settlement yields resources). Occupied territories do not yield resources."
+        },
+        "4": {
+            "picture": "/assets/cards/rebellion.jpg",
+            "headline": "Rebellion",
+            "description": "Inhabitants are resisting your occupation and formed a rebellion to gain independence. Every occupied (=unsettled) territory in the region loses one army (if only one army was present in the territory, you lose the territory) "
+
+        },
+        "5":{
+            "picture": "/assets/cards/harvest.jpg",
+            "headline": "Rich Harvests",
+            "description":"Every player earns one additional resource from a rich harvest from a settled region of their choice."
+        }
+    },
+    "economic":{
+        "template":{
+            "picture": "/assets/cards/factory.jpg",
+            "headline": "",
+            "description":""
+        },
+        "1":{
+            "picture": "/assets/cards/factory.jpg",
+            "headline": "Your Trade Network flurishes",
+            "description":"Your trade network is blossoming. You can trade in goods with the bank for 1 less resource (3 of the same kind instead of 4)."
+        },
+        "2":{
+            "picture": "/assets/cards/factory.jpg",
+            "headline": "New Harvest machines",
+            "description":"Through better technology you increase your crop yield this round. Cities produce 3 resources instead of 2."
+        }
+    },
+    "culture":{
+        "template":{
+            "picture": "/assets/cards/culture.jpg",
+            "headline": "",
+            "description":""
+        },
+        "1":{
+            "picture": "/assets/cards/culture.jpg",
+            "headline": "Urban Sprawl",
+            "description":"People are flocking to the cities for better lives. Upgrade one of your settlements to a city for one less resource of your choosing."
+        },
+        "2":{
+            "picture": "/assets/cards/culture.jpg",
+            "headline": "Better Sanitation",
+            "description":"Better sanitation allows your cities to bloom. You receive an extra army in each city."
+        }
+    },
+    "military":{
+        "template":{
+            "picture": "/assets/cards/army.jpg",
+            "headline": "",
+            "description":""
+        },
+        "1":{
+            "picture": "/assets/cards/army.jpg",
+            "headline": "For the Fatherland",
+            "description":"Your people want to support their home. You get <ONE> extra army and station it anywhere"
+        },
+        "2":{
+            "picture": "/assets/cards/army.jpg",
+            "headline": "Armed Industry Boom",
+            "description":"Better production techniques make it cheaper to produce armies. Buy armies at one less resource of your choice. "
+        }
+    }
+}
