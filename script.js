@@ -28,6 +28,7 @@ const app = Vue.createApp({
         }
     
     },
+    // requires data load once virtual DOM is mountaed
     mounted(){
         fetch("/data/cards.json")
         .then(res => res.json())
@@ -36,11 +37,13 @@ const app = Vue.createApp({
     })
     },
     methods:{
+        //Battle settings switch. Could be actual switch statement, change for more than 2 scenarios
         currentBattleSetting(){
             if (this.btn_sel['skirm']) return 'Skirmish'
             if (this.btn_sel['risk']) return 'Risk 3-Dice'
             return 'None'
         },
+        // toggels for buttons and modals
         toggleDesc(){
             this.showDesc = !this.showDesc
             this.showModal = !this.showModal
@@ -84,6 +87,7 @@ const app = Vue.createApp({
                 return 0                
             }
         },
+        // getPic and toggelCard might enter a race condition, as toggleCard is first called when the modal is rendered, and getPic thereafter 
         getPic(){
             return this.cardDisplay.picture
         },
@@ -115,6 +119,7 @@ const app = Vue.createApp({
                             this.cardDisplay = this.cards.event[`${whichEvent}`]
                             this.cardDisplay.region = this.regions[whichRegion];
                         }else{
+                            //catch all statements, should be handled more gracefully
                             alert("Oh rats... a Problem in... Event cards")
                         }
                 }else if(this.devCardTypes.includes(type)){
@@ -135,6 +140,7 @@ const app = Vue.createApp({
             
 
         },
+        // random int here assumes 1 as the minimum
         getRandomInt(max){
             return Math.floor(Math.random() * (max)) + 1
         },
@@ -211,7 +217,7 @@ const app = Vue.createApp({
     
                 this.fightBook.fightLog[`round_${rounds}`].attack = arr_attackRes
                 this.fightBook.fightLog[`round_${rounds}`].defend = arr_defendRes
-
+                
                 for (i=0; i < cnt_attack; i++){
                     if (!arr_defendRes[i]){break}
                     if (arr_attackRes[i] > arr_defendRes[i]){
